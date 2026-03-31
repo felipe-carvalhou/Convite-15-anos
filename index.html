@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Convite 15 Anos • Geovanna Anita</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: Georgia, serif;
+      background:
+        radial-gradient(circle at top, rgba(212, 175, 55, 0.18), transparent 30%),
+        radial-gradient(circle at bottom, rgba(212, 175, 55, 0.08), transparent 25%),
+        linear-gradient(180deg, #050505 0%, #0c0b08 40%, #12100c 100%);
+      overflow-x: hidden;
+    }
+
+    .gold-text {
+      background: linear-gradient(180deg, #f8e8a6 0%, #d9b95b 40%, #b8860b 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .gold-border {
+      border-color: rgba(212, 175, 55, 0.45);
+    }
+
+    .gold-glow {
+      box-shadow: 0 0 18px rgba(212, 175, 55, 0.18), inset 0 0 24px rgba(255, 215, 120, 0.05);
+    }
+
+    .cover-hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .invite-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .sparkles::before,
+    .sparkles::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        radial-gradient(circle, rgba(255, 222, 120, 0.95) 0 1px, transparent 1.6px),
+        radial-gradient(circle, rgba(255, 222, 120, 0.55) 0 1px, transparent 1.5px);
+      background-size: 120px 120px, 180px 180px;
+      background-position: 10px 20px, 50px 70px;
+      opacity: 0.18;
+    }
+
+    .envelope-wrap {
+      perspective: 1200px;
+    }
+
+    .envelope {
+      position: relative;
+      width: min(88vw, 560px);
+      height: min(56vw, 360px);
+      max-height: 360px;
+      transition: transform 0.7s ease;
+      cursor: pointer;
+    }
+
+    .envelope:hover {
+      transform: translateY(-4px) scale(1.01);
+    }
+
+    .envelope-back,
+    .envelope-front,
+    .envelope-flap,
+    .letter {
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: auto;
+      border-radius: 16px;
+    }
+
+    .envelope-back {
+      bottom: 0;
+      width: 100%;
+      height: 76%;
+      background: linear-gradient(180deg, #e4cfb6 0%, #cfb28f 100%);
+      box-shadow: 0 18px 40px rgba(0,0,0,.4);
+      overflow: hidden;
+    }
+
+    .envelope-back::before,
+    .envelope-back::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: 0.35;
+      background-image: linear-gradient(135deg, transparent 49.5%, rgba(124, 90, 53, 0.2) 50%, transparent 50.5%);
+      background-size: 100% 100%;
+    }
+
+    .envelope-front {
+      bottom: 0;
+      width: 100%;
+      height: 76%;
+      background: linear-gradient(180deg, #d9be9e 0%, #bea07b 100%);
+      clip-path: polygon(0 100%, 0 0, 50% 58%, 100% 0, 100% 100%);
+      z-index: 3;
+      border: 1px solid rgba(88, 57, 30, .18);
+    }
+
+    .envelope-flap {
+      top: 24%;
+      width: 100%;
+      height: 52%;
+      background: linear-gradient(180deg, #e9d6be 0%, #ccb08c 100%);
+      clip-path: polygon(0 0, 50% 100%, 100% 0);
+      transform-origin: top center;
+      transition: transform 1s ease;
+      z-index: 5;
+      border-top-left-radius: 18px;
+      border-top-right-radius: 18px;
+      border: 1px solid rgba(88, 57, 30, .14);
+    }
+
+    .seal {
+      position: absolute;
+      left: 50%;
+      top: 61%;
+      transform: translate(-50%, -50%);
+      width: 58px;
+      height: 58px;
+      border-radius: 9999px;
+      background: radial-gradient(circle at 30% 30%, #5c1a16, #2d0c0a 70%);
+      color: #f5ddb0;
+      display: grid;
+      place-items: center;
+      z-index: 6;
+      font-size: 1.15rem;
+      box-shadow: 0 6px 16px rgba(0,0,0,.35);
+      transition: opacity 0.35s ease;
+    }
+
+    .letter {
+      bottom: 36px;
+      width: 88%;
+      height: 72%;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.96), rgba(247,240,230,0.96)),
+        #fff;
+      z-index: 2;
+      transform: translateY(48px);
+      transition: transform 1s ease;
+      padding: 28px 24px;
+      box-shadow: 0 12px 30px rgba(0,0,0,.18);
+      border: 1px solid rgba(135, 108, 77, 0.14);
+    }
+
+    .envelope.open .envelope-flap {
+      transform: rotateX(180deg);
+    }
+
+    .envelope.open .letter {
+      transform: translateY(-34px);
+    }
+
+    .envelope.open .seal {
+      opacity: 0;
+    }
+
+    .invite-panel {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: all 0.8s ease;
+    }
+
+    .divider-line {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(212,175,55,.7), transparent);
+    }
+
+    .btn-gold {
+      background: linear-gradient(180deg, #f2db99 0%, #c89a2a 65%, #9f720f 100%);
+      color: #1a1408;
+      box-shadow: 0 10px 24px rgba(212, 175, 55, 0.2);
+    }
+
+    .btn-gold:hover {
+      filter: brightness(1.04);
+      transform: translateY(-1px);
+    }
+    /* Responsividade adicional para dispositivos móveis */
+    img { max-width: 100%; height: auto; display: block; }
+
+    /* Ajustes responsivos para títulos, envelope e botões */
+    .gold-text { font-size: clamp(1.6rem, 6vw, 4.5rem); }
+
+    #envelope { max-width: 88vw; width: min(320px, 60vw); height: auto; padding: 6px; border-radius: 12px; }
+
+    @media (max-width: 640px) {
+      body { padding-bottom: 2rem; }
+      .mask { width: 180px; height: 86px; }
+      .divider-line { margin-left: auto; margin-right: auto; }
+      .btn-gold, #copyPix { width: 100%; }
+      p { font-size: 14px; }
+      .envelope { width: auto; height: auto; }
+    }
+  </style>
+</head>
+<body class="text-white min-h-screen">
+  <section id="cover" class="sparkles relative min-h-screen flex items-center justify-center px-4 py-10 transition-all duration-700">
+    <div class="absolute inset-0 bg-black/20"></div>
+
+    <div class="relative z-10 w-full max-w-4xl mx-auto text-center">
+      <div class="flex justify-center mb-8">
+        <img src="mascara.png" alt="Máscara de Baile Dourada" class="w-48 sm:w-60 mx-auto drop-shadow-[0_8px_14px_rgba(0,0,0,0.55)] object-contain" />
+      </div>
+
+      <p class="uppercase tracking-[0.4em] text-xs sm:text-sm text-amber-200/80 mb-4">Baile de Máscaras</p>
+      <h1 class="gold-text text-4xl sm:text-6xl md:text-7xl italic leading-tight">Geovanna Anita</h1>
+      <p class="mt-4 text-amber-100/80 tracking-[0.25em] uppercase text-sm sm:text-base">XV Anos • 10/10/2026</p>
+
+      <div class="mt-10 flex justify-center">
+  <img 
+    id="envelope" 
+    src="seu-envelope.png" 
+    alt="Envelope do Convite" 
+    class="w-64 sm:w-80 cursor-pointer transition-transform duration-500 hover:-translate-y-2 hover:scale-105 drop-shadow-[0_15px_25px_rgba(0,0,0,0.6)] object-contain" 
+    role="button" 
+    tabindex="0" 
+    aria-label="Abrir convite" 
+  />
+</div>
+
+      <p class="mt-8 text-sm sm:text-base text-amber-100/75">Toque no envelope para revelar o convite</p>
+    </div>
+  </section>
+
+  <section id="invite" class="invite-panel px-4 pb-12 -mt-6 hidden">
+    <div class="max-w-3xl mx-auto">
+      <div class="relative overflow-hidden rounded-[2rem] border gold-border bg-gradient-to-b from-[#120f09] via-[#0d0b08] to-[#070605] p-6 sm:p-10 gold-glow">
+        <div class="absolute inset-0 pointer-events-none opacity-20"
+             style="background: radial-gradient(circle at top, rgba(212,175,55,.2), transparent 28%), radial-gradient(circle at bottom, rgba(212,175,55,.14), transparent 35%);"></div>
+
+        <div class="relative text-center">
+          <p class="uppercase tracking-[0.42em] text-[11px] sm:text-xs text-amber-200/70">Convite Especial</p>
+          <h2 class="gold-text mt-4 text-4xl sm:text-6xl italic">Geovanna Anita</h2>
+          <p class="mt-3 text-xl sm:text-2xl gold-text tracking-[0.18em] uppercase">15 Anos</p>
+
+          <div class="flex justify-center my-8">
+             <img src="mascara.png" alt="Máscara de Baile Dourada" class="w-48 sm:w-60 mx-auto drop-shadow-[0_8px_14px_rgba(0,0,0,0.55)] object-contain scale-90 sm:scale-100" />
+          </div>
+
+          <p class="text-lg sm:text-2xl italic text-amber-100/95">Baile de Máscaras</p>
+          <div class="divider-line my-8"></div>
+
+          <div class="grid gap-4 sm:gap-5 text-left max-w-2xl mx-auto">
+            <div class="rounded-3xl border gold-border bg-white/5 p-4 sm:p-5">
+              <p class="text-xs uppercase tracking-[0.28em] text-amber-200/70">Data e horário</p>
+              <p class="mt-2 text-lg sm:text-2xl text-amber-50">10/10/2026 às 20 horas</p>
+            </div>
+
+            <div class="rounded-3xl border gold-border bg-white/5 p-4 sm:p-5">
+              <p class="text-xs uppercase tracking-[0.28em] text-amber-200/70">Traje</p>
+              <p class="mt-2 text-lg sm:text-2xl text-amber-50">Black-Tie</p>
+            </div>
+
+            <div class="rounded-3xl border gold-border bg-white/5 p-4 sm:p-5">
+              <p class="text-xs uppercase tracking-[0.28em] text-amber-200/70">Local</p>
+              <p class="mt-2 text-lg sm:text-2xl text-amber-50">Espaço Celebrare</p>
+              <p class="mt-1 text-base sm:text-lg text-amber-100/85">Rua Luiz Beltrão, 714 • Vila Valqueire</p>
+            </div>
+
+            <div class="rounded-3xl border gold-border bg-white/5 p-4 sm:p-5">
+              <p class="text-xs uppercase tracking-[0.28em] text-amber-200/70">Presente via Pix</p>
+              <p class="mt-2 text-base sm:text-xl text-amber-50 break-all">Chave Pix: 21 97461-6821</p>
+            </div>
+          </div>
+
+          <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a
+              href="https://wa.me/5521979694222?text=Ol%C3%A1%21%20Gostaria%20de%20confirmar%20presen%C3%A7a%20no%20Baile%20de%20M%C3%A1scaras%20de%20Geovanna%20Anita."
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-gold inline-flex items-center justify-center rounded-full px-6 py-3 font-semibold transition-all duration-300 w-full sm:w-auto"
+            >
+              Confirmar presença
+            </a>
+
+            <button
+              id="copyPix"
+              class="inline-flex items-center justify-center rounded-full border gold-border bg-white/5 px-6 py-3 font-semibold text-amber-50 transition-all duration-300 hover:bg-white/10 w-full sm:w-auto"
+            >
+              Copiar chave Pix
+            </button>
+          </div>
+
+          <p id="pixFeedback" class="mt-4 text-sm text-amber-200/80 h-5"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const envelope = document.getElementById('envelope');
+    const cover = document.getElementById('cover');
+    const invite = document.getElementById('invite');
+    const copyPix = document.getElementById('copyPix');
+    const pixFeedback = document.getElementById('pixFeedback');
+    const pixKey = '21 974616821';
+    let opened = false;
+
+    function openInvite() {
+      // Redireciona para a página dedicada do convite
+      window.location.href = 'convite.html';
+    }
+
+    envelope.addEventListener('click', openInvite);
+    envelope.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        openInvite();
+      }
+    });
+
+    copyPix.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(pixKey);
+        pixFeedback.textContent = 'Chave Pix copiada com sucesso.';
+      } catch (error) {
+        pixFeedback.textContent = 'Não foi possível copiar automaticamente. Chave: ' + pixKey;
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Convite de 15 Anos - Geovanna Anita</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serifFancy: ["Georgia", "serif"],
+            cursive: ["'Great Vibes'", "cursive"], // Adicionado para o Modal
+          },
+          boxShadow: {
+            gold: "0 0 30px rgba(212, 175, 55, 0.28)",
+          },
+          animation: {
+            floatSlow: "floatSlow 4s ease-in-out infinite",
+            shimmer: "shimmer 3.5s linear infinite",
+            fadeUp: "fadeUp 1s ease forwards",
+          },
+          keyframes: {
+            floatSlow: {
+              "0%, 100%": { transform: "translateY(0px)" },
+              "50%": { transform: "translateY(-8px)" }
+            },
+            shimmer: {
+              "0%": { backgroundPosition: "-200% center" },
+              "100%": { backgroundPosition: "200% center" }
+            },
+            fadeUp: {
+              "0%": { opacity: 0, transform: "translateY(22px)" },
+              "100%": { opacity: 1, transform: "translateY(0)" }
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body {
+      background:
+        radial-gradient(circle at 20% 20%, rgba(212,175,55,.12), transparent 22%),
+        radial-gradient(circle at 80% 15%, rgba(212,175,55,.10), transparent 20%),
+        radial-gradient(circle at 50% 80%, rgba(255,255,255,.04), transparent 25%),
+        linear-gradient(180deg, #060606 0%, #0b0b0b 35%, #111111 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .gold-text {
+      background: linear-gradient(90deg, #b98918 0%, #f8e2a0 18%, #d4af37 40%, #fff2c9 52%, #b88915 72%, #f0cf73 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .gold-line {
+      background: linear-gradient(90deg, transparent, rgba(212,175,55,.18), #d4af37, rgba(212,175,55,.18), transparent);
+    }
+
+    .card-glow {
+      background: linear-gradient(180deg, rgba(15,15,15,.92), rgba(8,8,8,.96));
+      border: 1px solid rgba(212,175,55,.22);
+      box-shadow: 0 10px 40px rgba(0,0,0,.45), 0 0 0 1px rgba(255,255,255,.03) inset;
+      backdrop-filter: blur(8px);
+    }
+
+    .sparkle::before,
+    .sparkle::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        radial-gradient(circle, rgba(255,230,164,.6) 1px, transparent 1.8px),
+        radial-gradient(circle, rgba(212,175,55,.5) 1px, transparent 2px),
+        radial-gradient(circle, rgba(255,255,255,.28) .8px, transparent 1.6px);
+      background-size: 130px 130px, 180px 180px, 220px 220px;
+      background-position: 0 0, 40px 20px, 100px 60px;
+      opacity: .18;
+      border-radius: inherit;
+    }
+
+    .btn-whats {
+      background: linear-gradient(135deg, #d4af37, #f7e7b1, #c99a22);
+      color: #111;
+      box-shadow: 0 10px 25px rgba(212,175,55,.2);
+    }
+
+    .btn-whats:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(212,175,55,.28);
+    }
+
+    /* Modal Background e Botões Dourados do Modal - ATUALIZADO PARA PRETO */
+    .bg-modal-black {
+      background: radial-gradient(circle at top, #1a1a1a 0%, #000000 100%);
+    }
+    .btn-modal-gold {
+      background: linear-gradient(90deg, #cf9d38 0%, #fceab3 50%, #cf9d38 100%);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.5), inset 0 2px 5px rgba(255,255,255,0.4);
+    }
+
+    /* Responsividade adicional para celular */
+    img { max-width: 100%; height: auto; display: block; }
+    .gold-text { font-size: clamp(1.8rem, 6.5vw, 3.6rem); }
+
+    @media (max-width: 640px) {
+      .mask-shell { width: min(360px, 88vw); height: 140px; }
+      .card-glow { padding: 1rem; }
+      .btn-whats, #btnSugestoes, #confirmarPresenca { width: 100%; display: block; text-align: center; }
+      .mt-10 { margin-top: 1.5rem; }
+      .mt-8 { margin-top: 1.25rem; }
+    }
+  </style>
+</head>
+<body class="text-white selection:bg-amber-200 selection:text-black relative">
+  <main class="relative isolate px-4 py-8 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-5xl">
+      <section class="card-glow sparkle relative overflow-hidden rounded-[2rem] px-6 py-10 sm:px-10 sm:py-14 shadow-gold animate-fadeUp">
+        <div class="absolute inset-x-0 top-0 h-px gold-line"></div>
+        <div class="absolute inset-x-0 bottom-0 h-px gold-line"></div>
+
+        <div class="mx-auto flex max-w-3xl flex-col items-center text-center">
+          <p class="mb-3 text-xs uppercase tracking-[0.45em] text-amber-100/70">Baile de Máscaras</p>
+
+          <img src="mascara.png" alt="Máscara de Baile Dourada" class="w-64 sm:w-80 mb-8 mx-auto animate-floatSlow drop-shadow-[0_10px_18px_rgba(212,175,55,0.18)] object-contain" />
+
+          <h1 class="gold-text animate-shimmer font-serifFancy text-5xl leading-none sm:text-7xl">
+            Geovanna Anita
+          </h1>
+
+          <div class="my-5 h-px w-40 gold-line sm:w-56"></div>
+
+          <p class="gold-text font-serifFancy text-3xl tracking-[0.2em] sm:text-5xl">
+            XV ANOS
+          </p>
+
+          <p class="mt-6 max-w-2xl text-sm leading-7 text-zinc-300 sm:text-base">
+            Uma noite especial, elegante e inesquecível.
+            A presença de cada convidado tornará este momento ainda mais marcante.
+          </p>
+        </div>
+
+        <div class="mt-10 grid gap-4 sm:mt-12 sm:grid-cols-2 lg:grid-cols-4">
+          <div class="rounded-3xl border border-amber-300/15 bg-white/[0.03] p-5 text-center">
+            <p class="text-xs uppercase tracking-[0.3em] text-amber-100/60">Data</p>
+            <p class="mt-2 text-lg font-semibold text-amber-50">10/10/2026</p>
+          </div>
+
+          <div class="rounded-3xl border border-amber-300/15 bg-white/[0.03] p-5 text-center">
+            <p class="text-xs uppercase tracking-[0.3em] text-amber-100/60">Horário</p>
+            <p class="mt-2 text-lg font-semibold text-amber-50">20 horas</p>
+          </div>
+
+          <div class="rounded-3xl border border-amber-300/15 bg-white/[0.03] p-5 text-center">
+            <p class="text-xs uppercase tracking-[0.3em] text-amber-100/60">Traje</p>
+            <p class="mt-2 text-lg font-semibold text-amber-50">Black-Tie</p>
+          </div>
+
+          <div class="rounded-3xl border border-amber-300/15 bg-white/[0.03] p-5 text-center">
+            <p class="text-xs uppercase tracking-[0.3em] text-amber-100/60">Tema</p>
+            <p class="mt-2 text-lg font-semibold text-amber-50">Baile de Máscaras</p>
+          </div>
+        </div>
+
+        <div class="mt-8 flex justify-center">
+          <div class="w-full max-w-3xl rounded-[1.75rem] border border-amber-300/15 bg-white/[0.03] p-6 sm:p-7 text-center">
+            <p class="text-xs uppercase tracking-[0.3em] text-amber-100/60">Local</p>
+            <h2 class="mt-3 gold-text font-serifFancy text-2xl sm:text-4xl">Espaço Celebrare</h2>
+            <p class="mt-3 text-zinc-300">Rua Luiz Beltrão, 714 — Vila Valqueire</p>
+
+            <div class="mt-6 h-px w-full gold-line"></div>
+
+            <p class="mt-6 text-sm leading-7 text-zinc-300">
+              Prepare a máscara, o brilho e a elegância para celebrar esta noite mágica.
+            </p>
+
+            <div class="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <button
+                id="confirmarPresenca"
+                class="btn-whats inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold transition w-full sm:w-auto"
+                type="button"
+              >
+                Confirmar presença
+              </button>
+
+              <button
+                id="btnSugestoes"
+                class="inline-flex items-center justify-center rounded-full border border-amber-200/20 bg-zinc-900/70 px-6 py-3 text-sm font-semibold text-amber-100 transition hover:border-amber-200/40 hover:bg-zinc-800/80 w-full sm:w-auto"
+                type="button"
+              >
+                Sugestões de presentes
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-10 flex justify-center">
+          <div class="h-px w-full max-w-xl gold-line"></div>
+        </div>
+
+        <p class="mt-8 text-center text-xs uppercase tracking-[0.28em] text-zinc-500">
+          Geovanna Anita • 15 anos • 10/10/2026
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <div id="modalSugestoes" class="fixed inset-0 z-50 flex items-center justify-center bg-black/85 p-4 backdrop-blur-sm transition-opacity hidden opacity-0 duration-300">
+    <div class="relative w-full max-w-md rounded-[2rem] border border-amber-300/30 overflow-hidden shadow-2xl bg-modal-black transform scale-95 transition-transform duration-300" id="modalContent">
+      
+      <button id="closeModal" class="absolute top-4 right-5 text-amber-200/70 hover:text-amber-100 z-10 text-3xl font-light">&times;</button>
+
+      <div class="p-8 pt-10 flex flex-col items-center text-center relative sparkle">
+         
+         <img src="mascara.png" class="w-28 mb-4 drop-shadow-[0_5px_15px_rgba(212,175,55,0.4)] object-contain" alt="Máscara">
+
+         <div class="my-2 h-px w-32 gold-line"></div>
+
+         <h2 class="text-4xl text-[#f5db99] font-cursive mb-8 tracking-wide" style="text-shadow: 0 2px 4px rgba(0,0,0,0.8);">Sugestão de presentes</h2>
+
+         <div class="w-full space-y-5">
+           
+           <div class="btn-modal-gold rounded-full px-4 py-3 relative flex items-center justify-center">
+              <span class="absolute left-4 text-xl">👚</span>
+              <p class="text-[#730a0a] font-bold text-[10px] sm:text-xs uppercase tracking-wider leading-relaxed">
+                Visto Tamanho: Blusa M<br>Short 34 | Calça Tamanho 14
+              </p>
+           </div>
+           
+           <div class="btn-modal-gold rounded-full px-4 py-3 relative flex items-center justify-center">
+              <span class="absolute left-4 text-xl">🥿</span>
+              <p class="text-[#730a0a] font-bold text-[10px] sm:text-xs uppercase tracking-wider">
+                Calço 34/35
+              </p>
+           </div>
+           
+           <div class="btn-modal-gold rounded-full px-4 py-3">
+              <p class="text-[#730a0a] font-bold text-[10px] sm:text-xs uppercase tracking-wider leading-relaxed">
+                Sugestões de Marcas:<br>Keltz, Boticário, Natura, Pimenta<br>Rosa, Riachuelo, C&A, Thomas Rabelo, Sephora
+              </p>
+           </div>
+           
+           <div class="btn-modal-gold rounded-full px-4 py-3">
+              <p class="text-[#730a0a] font-bold text-[10px] sm:text-xs uppercase tracking-wider leading-relaxed">
+                Chave Pix: 21 974616821<br>Geovanna Anita
+              </p>
+           </div>
+
+         </div>
+
+         <div class="mt-8 h-px w-32 gold-line"></div>
+
+         <p class="mt-6 text-2xl text-[#f5db99] font-cursive tracking-wide" style="text-shadow: 0 2px 4px rgba(0,0,0,0.8);">
+           Lembrando que meu maior presente<br>será ter a sua presença!
+         </p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Lógica do WhatsApp
+    const confirmarPresenca = document.getElementById("confirmarPresenca");
+    const whatsappNumero = "21 979694222";
+
+    confirmarPresenca.addEventListener("click", () => {
+      const numeroLimpo = whatsappNumero.replace(/\D/g, "");
+      if (numeroLimpo.length < 10) {
+        alert("Falta o número completo do WhatsApp para o link funcionar certinho.");
+        return;
+      }
+      const texto = encodeURIComponent("Olá, quero confirmar presença no aniversário de 15 anos da Geovanna Anita.");
+      window.open(`https://wa.me/55${numeroLimpo}?text=${texto}`, "_blank");
+    });
+
+    // Lógica do Modal de Sugestões
+    const btnSugestoes = document.getElementById("btnSugestoes");
+    const modalSugestoes = document.getElementById("modalSugestoes");
+    const closeModal = document.getElementById("closeModal");
+    const modalContent = document.getElementById("modalContent");
+
+    function abrirModal() {
+      modalSugestoes.classList.remove("hidden");
+      setTimeout(() => {
+        modalSugestoes.classList.remove("opacity-0");
+        modalContent.classList.remove("scale-95");
+      }, 10);
+    }
+
+    function fecharModal() {
+      modalSugestoes.classList.add("opacity-0");
+      modalContent.classList.add("scale-95");
+      setTimeout(() => {
+        modalSugestoes.classList.add("hidden");
+      }, 300);
+    }
+
+    btnSugestoes.addEventListener("click", abrirModal);
+    closeModal.addEventListener("click", fecharModal);
+
+    modalSugestoes.addEventListener("click", (e) => {
+      if(e.target === modalSugestoes) {
+        fecharModal();
+      }
+    });
+  </script>
+</body>
+</html>
