@@ -12,7 +12,7 @@
         extend: {
           fontFamily: {
             serifFancy: ["Georgia", "serif"],
-            cursive: ["'Great Vibes'", "cursive"], // Adicionado para o Modal
+            cursive: ["'Great Vibes'", "cursive"],
           },
           boxShadow: {
             gold: "0 0 30px rgba(212, 175, 55, 0.28)",
@@ -98,7 +98,6 @@
       box-shadow: 0 14px 30px rgba(212,175,55,.28);
     }
 
-    /* Modal Background e Botões Dourados do Modal - ATUALIZADO PARA PRETO */
     .bg-modal-black {
       background: radial-gradient(circle at top, #1a1a1a 0%, #000000 100%);
     }
@@ -107,7 +106,6 @@
       box-shadow: 0 4px 15px rgba(0,0,0,0.5), inset 0 2px 5px rgba(255,255,255,0.4);
     }
 
-    /* Responsividade adicional para celular */
     img { max-width: 100%; height: auto; display: block; }
     .gold-text { font-size: clamp(1.8rem, 6.5vw, 3.6rem); }
 
@@ -146,6 +144,10 @@
             Uma noite especial, elegante e inesquecível.
             A presença de cada convidado tornará este momento ainda mais marcante.
           </p>
+        </div>
+
+        <div class="mt-10 flex justify-center">
+          <img src="geo.jpeg" alt="Foto de Geovanna Anita" class="w-full max-w-sm rounded-3xl border border-amber-300/30 shadow-[0_0_20px_rgba(212,175,55,0.15)] object-cover" />
         </div>
 
         <div class="mt-10 grid gap-4 sm:mt-12 sm:grid-cols-2 lg:grid-cols-4">
@@ -266,7 +268,6 @@
   </div>
 
   <script>
-    // Lógica do WhatsApp
     const confirmarPresenca = document.getElementById("confirmarPresenca");
     const whatsappNumero = "21 979694222";
 
@@ -280,7 +281,6 @@
       window.open(`https://wa.me/55${numeroLimpo}?text=${texto}`, "_blank");
     });
 
-    // Lógica do Modal de Sugestões
     const btnSugestoes = document.getElementById("btnSugestoes");
     const modalSugestoes = document.getElementById("modalSugestoes");
     const closeModal = document.getElementById("closeModal");
